@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+
+{% block title %}FixMyCampus — Smart Campus Facilities & Problem Management{% endblock %}
+
+{% block content %}
+
+<!-- ==========================================================================
+     1. Cinematic Hero Canopy Section
+     ========================================================================== -->
+<section class="hero-canopy">
+  <div class="hero-canopy-overlay"></div>
+  <div class="container hero-canopy-inner">
+    
+    <span class="canopy-eyebrow">Smart Campus Facilities</span>
+    <h1 class="canopy-headline">FixMyCampus.</h1>
+    <p class="canopy-subhead">Effortless problem reporting & facilities management.</p>
+
+    <div class="canopy-actions">
+      <a href="#report-modal" class="btn-canopy-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span>Report a Problem</span>
+      </a>
+      <a href="/admin" class="btn-canopy-secondary">
+        Facilities Admin &rarr;
+      </a>
+    </div>
+
+    <!-- Frosted Glass Search & Filter Bar -->
+    <div class="canopy-search-bar">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" class="canopy-search-input" placeholder="Search problems, equipment, or campus buildings..." value="{{ search_query }}">
+      </div>
+      
+      <div class="search-select-wrap">
+        <select name="building" class="canopy-building-select">
+          <option value="All">All Campus Locations</option>
+          {% for b in buildings %}
+          <option value="{{ b }}">{{ b }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================================
+     2. Block 1: Editorial Warm Sand Section with Architectural Line Art
+     ========================================================================== -->
+<section class="block-one-section">
+  <div class="container">
+    <div class="block-one-grid">
+      
+      <!-- Left Editorial Column -->
+      <div class="block-one-content">
+        <span class="block-eyebrow">Campus Care & Facilities</span>
+        <h2 class="block-headline">
+          Preserving our grounds and learning spaces.
+        </h2>
+        <p class="block-lead">
+          From lecture hall air conditioning to library connectivity, FixMyCampus unites student reports with dedicated university maintenance teams.
+        </p>
+
+        <ol class="block-steps-list">
+          <li>
+            <span class="step-marker">01</span>
+            <div class="step-text">
+              <strong>Instant 30-Second Reporting</strong>
+              <span>Snap an issue, select your wing and room number, and dispatch directly to facilities.</span>
+            </div>
+          </li>
+          <li>
+            <span class="step-marker">02</span>
+            <div class="step-text">
+              <strong>Community "Me Too" Endorsements</strong>
+              <span>Multiple students upvoting an outage instantly escalates ticket priority for duty heads.</span>
+            </div>
+          </li>
+          <li>
+            <span class="step-marker">03</span>
+            <div class="step-text">
+              <strong>Verified Technical Resolution</strong>
+              <span>Certified campus crews resolve faults with photographic evidence and logged repair notes.</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Right Architectural Line Art Column -->
+      <div class="block-one-graphic">
+        <div class="architectural-frame">
+          <svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="campus-blueprint-svg">
+            <!-- Ground baseline -->
+            <line x1="40" y1="270" x2="360" y2="270" stroke="#33463C" stroke-width="1.5" stroke-dasharray="4 4" />
+            <line x1="20" y1="280" x2="380" y2="280" stroke="#25352D" stroke-width="2" />
+            
+            <!-- Portico Steps -->
+            <rect x="110" y="260" width="180" height="8" stroke="#33463C" stroke-width="1.5" rx="1" />
+            <rect x="120" y="252" width="160" height="8" stroke="#33463C" stroke-width="1.5" rx="1" />
+            <rect x="130" y="244" width="140" height="8" stroke="#33463C" stroke-width="1.5" rx="1" />
+
+            <!-- Main Library & Dome Structure -->
+            <rect x="90" y="140" width="220" height="104" stroke="#25352D" stroke-width="2" />
+            
+            <!-- Columns (Classical Campus Quad Style) -->
+            <line x1="140" y1="140" x2="140" y2="244" stroke="#9E7D56" stroke-width="3" />
+            <line x1="175" y1="140" x2="175" y2="244" stroke="#9E7D56" stroke-width="3" />
+            <line x1="225" y1="140" x2="225" y2="244" stroke="#9E7D56" stroke-width="3" />
+            <line x1="260" y1="140" x2="260" y2="244" stroke="#9E7D56" stroke-width="3" />
+            
+            <!-- Main Arched Portal -->
+            <path d="M185 244V185C185 176.716 191.716 170 200 170C208.284 170 215 176.716 215 185V244" stroke="#25352D" stroke-width="2" />
+
+            <!-- Triangular Pediment -->
+            <polygon points="80,140 200,80 320,140" stroke="#25352D" stroke-width="2.5" fill="#FAF7F2" />
+            <circle cx="200" cy="115" r="14" stroke="#9E7D56" stroke-width="1.5" />
+            <line x1="200" y1="105" x2="200" y2="125" stroke="#9E7D56" stroke-width="1.5" />
+            <line x1="190" y1="115" x2="210" y2="115" stroke="#9E7D56" stroke-width="1.5" />
+
+            <!-- Classical Cupola / Observatory Dome -->
+            <path d="M175 80C175 66.1929 186.193 55 200 55C213.807 55 225 66.1929 225 80H175Z" stroke="#25352D" stroke-width="2" />
+            <line x1="200" y1="55" x2="200" y2="35" stroke="#9E7D56" stroke-width="2" />
+            <circle cx="200" cy="35" r="3" fill="#9E7D56" />
+
+            <!-- Flanking Wing Windows -->
+            <rect x="105" y="160" width="18" height="32" rx="9" stroke="#33463C" stroke-width="1.5" />
+            <rect x="277" y="160" width="18" height="32" rx="9" stroke="#33463C" stroke-width="1.5" />
+
+            <!-- Botanical Foliage Accents -->
+            <path d="M45 265C45 235 65 220 80 235C80 215 105 225 95 265" stroke="#447A62" stroke-width="1.5" fill="none" />
+            <path d="M355 265C355 235 335 220 320 235C320 215 295 225 305 265" stroke="#447A62" stroke-width="1.5" fill="none" />
+          </svg>
+          <div class="architectural-caption">University Quadrangle & Facilities Blueprint</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     3. Active Campus Reports: Rich Photographic Cards Grid (2x2)
+     ========================================================================== -->
+<section class="photo-feed-section" id="campus-feed">
+  <div class="container">
+
+    <!-- Category Filter Pills -->
+    <div class="category-pills-bar">
+      <a href="/?category=All#campus-feed" class="cat-pill {% if selected_category == 'All' %}active{% endif %}">All Categories</a>
+      {% for cat in categories %}
+      <a href="/?category={{ cat.name|urlencode }}#campus-feed" class="cat-pill {% if selected_category == cat.name %}active{% endif %}">
+        {{ cat.name }}
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Feed Header & Tabs -->
+    <div class="feed-header-section">
+      <div>
+        <h2 class="feed-title">Campus Issues & Active Reports</h2>
+        <p class="feed-subtitle">Showing priority issues across academic, laboratory, and residential wings.</p>
+      </div>
+
+      <div class="feed-tabs-row" id="feedTabs">
+        <button type="button" class="tab-btn active" data-tab="trending">Trending (Top 4)</button>
+        <button type="button" class="tab-btn" data-tab="urgent">Needs Attention</button>
+        <button type="button" class="tab-btn" data-tab="resolved">Resolved</button>
+        <button type="button" class="tab-btn" data-tab="all">All ({{ issues|length }})</button>
+      </div>
+    </div>
+
+    <!-- Rich Photographic 2x2 Grid -->
+    <div class="photo-cards-grid" id="ticketsContainer">
+      {% if issues|length == 0 %}
+      <div class="empty-state-box" style="grid-column: 1 / -1;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--forest-600); margin-bottom:0.75rem;">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <h3>No active reports found</h3>
+        <p>All facilities in this category are operating smoothly.</p>
+      </div>
+      {% else %}
+      {% for issue in issues %}
+      
+      {# Exact problem-matching photograph #}
+      {% set card_img = issue.matched_photo if issue.matched_photo else '/static/images/issue_wifi_fiber.jpg' %}
+
+      <div class="photo-card {% if loop.index > 4 %}card-extra d-none{% endif %}"
+           data-index="{{ loop.index }}"
+           data-category="{{ issue.category }}"
+           data-building="{{ issue.building }}"
+           data-status="{{ issue.status }}"
+           data-priority="{{ issue.priority }}"
+           data-upvotes="{{ issue.upvotes }}">
+        
+        <!-- Photographic Card Banner -->
+        <div class="photo-card-media">
+          <img src="{{ card_img }}" alt="{{ issue.building }}" class="photo-card-img" loading="lazy">
+          <div class="photo-media-overlay"></div>
+          
+          <span class="media-tag-cat">{{ issue.category }}</span>
+          
+          <span class="media-tag-status status-{{ issue.status|lower|replace(' ', '-') }}">
+            <span class="status-pulse-dot"></span>
+            {{ issue.status }}
+          </span>
+        </div>
+
+        <!-- Card Body Content -->
+        <div class="photo-card-body">
+          <div class="photo-card-meta">
+            <span class="prio-pill prio-{{ issue.priority|lower }}">{{ issue.priority }} Priority</span>
+            <span class="location-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              {{ issue.building }}
+            </span>
+          </div>
+
+          <h3 class="photo-card-title">
+            <a href="/ticket/{{ issue.id }}">{{ issue.title }}</a>
+          </h3>
+
+          <p class="photo-card-desc">{{ issue.description }}</p>
+
+          <div class="photo-card-footer">
+            <!-- Upvote Action -->
+            <form action="/upvote/{{ issue.id }}" method="POST" class="upvote-form">
+              <input type="hidden" name="redirect_to" value="{{ request.url.path }}">
+              <button type="submit" class="upvote-btn-editorial" title="Endorse this problem report">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+                <span class="upvote-count">{{ issue.upvotes }}</span>
+                <span class="upvote-label">Endorse</span>
+              </button>
+            </form>
+
+            <a href="/ticket/{{ issue.id }}" class="btn-card-details">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- View All / Show Less Toggle -->
+    {% if issues|length > 4 %}
+    <div class="feed-expand-wrapper" id="expandFeedRow">
+      <button type="button" class="btn-expand-feed" id="btnToggleFeed">
+        <span>View all {{ issues|length }} campus reports</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<!-- ==========================================================================
+     Report Problem Floating Modal (STRICTLY MODAL ONLY)
+     ========================================================================== -->
+<div id="report-modal" class="modal-overlay">
+  <div class="modal-window">
+    <div class="modal-header">
+      <div>
+        <h3 class="modal-title">Report a Campus Issue</h3>
+        <p class="modal-desc">Submit a maintenance ticket directly to university facilities.</p>
+      </div>
+      <a href="#" class="modal-close" aria-label="Close modal">&times;</a>
+    </div>
+
+    <div class="modal-body">
+      <form action="/report" method="POST" enctype="multipart/form-data">
+        
+        <!-- Field 1: What is broken? -->
+        <div class="form-group">
+          <label class="form-label" for="report-title">1. Problem Summary *</label>
+          <input type="text" id="report-title" name="title" class="form-input" placeholder="e.g. Water cooler leaking on 2nd floor" required>
+        </div>
+
+        <!-- Field 2: Category -->
+        <div class="form-group">
+          <label class="form-label" for="report-category">2. Facility Category *</label>
+          <select id="report-category" name="category" class="form-input" required>
+            <option value="Electrical">Power & Electrical (Lights, switches, power cuts)</option>
+            <option value="Plumbing">Water & Plumbing (Leaks, taps, washrooms)</option>
+            <option value="IT & WiFi">WiFi & Internet (Slow connectivity, router down)</option>
+            <option value="HVAC & Cooling">Air Conditioning & Ventilation</option>
+            <option value="Sanitation">Sanitation & Hygiene (Corridors, waste bins)</option>
+            <option value="Labs & Equipment">Lab Equipment & Audiovisual</option>
+            <option value="Civil & Furniture">Furniture & Infrastructure (Chairs, doors, windows)</option>
+          </select>
+        </div>
+
+        <!-- Field 3: Where is it? -->
+        <div class="form-group">
+          <label class="form-label">3. Location Details *</label>
+          <div class="form-grid-2">
+            <select name="building" class="form-input" required>
+              {% for b in buildings %}
+              <option value="{{ b }}">{{ b }}</option>
+              {% endfor %}
+            </select>
+            <input type="text" name="location_detail" class="form-input" placeholder="Room no. or floor (e.g. Room 204)" required>
+          </div>
+        </div>
+
+        <!-- Field 4: Description & Optional Photo -->
+        <div class="form-group">
+          <label class="form-label" for="report-desc">4. Description *</label>
+          <textarea id="report-desc" name="description" class="form-input form-textarea" placeholder="Provide any details to help technicians resolve it quickly..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Attach Photo (Optional)</label>
+          <input type="file" name="photo" class="form-input form-file-input" accept="image/*">
+        </div>
+
+        <input type="hidden" name="priority" value="High">
+        <input type="hidden" name="reported_by" value="Student">
+
+        <div class="modal-actions">
+          <button type="submit" class="btn-modal-submit">
+            Submit Maintenance Ticket
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
