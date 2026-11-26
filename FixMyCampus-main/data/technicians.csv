@@ -1,7 +1,0 @@
-id,name,role,dept,phone,rating,status
-1,Rajesh Kumar,Senior Electrician,Electrical,+91 98765-43210,4.9,On Duty
-2,Suresh Patel,Lead Plumber & Piping,Plumbing,+91 98765-43211,4.8,On Duty
-3,Vikramaditya Roy,Campus Network Engineer,IT & WiFi,+91 98765-43212,4.95,On Duty
-4,Anita Sen,Sanitation & Housekeeping Lead,Sanitation,+91 98765-43213,4.7,On Duty
-5,Manoj Sharma,HVAC / AC Specialist,HVAC & Cooling,+91 98765-43214,4.85,On Duty
-6,Harish Verma,Civil & Carpentry Contractor,Civil & Furniture,+91 98765-43215,4.65,Available
